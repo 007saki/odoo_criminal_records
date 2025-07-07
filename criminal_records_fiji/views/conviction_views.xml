@@ -1,10 +1,11 @@
 <odoo>
+    <!-- List View -->
     <record id="view_conviction_list" model="ir.ui.view">
         <field name="name">criminal.conviction.list</field>
         <field name="model">criminal.conviction</field>
         <field name="type">list</field>
         <field name="arch" type="xml">
-            <list>
+            <list editable="bottom" decoration-danger="sentence == 'Life'">
                 <field name="record_id"/>
                 <field name="conviction_date"/>
                 <field name="offense"/>
@@ -12,21 +13,119 @@
             </list>
         </field>
     </record>
+
+    <!-- Kanban View -->
+    <record id="view_conviction_kanban" model="ir.ui.view">
+        <field name="name">criminal.conviction.kanban</field>
+        <field name="model">criminal.conviction</field>
+        <field name="type">kanban</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="offense"/>
+                <field name="sentence"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <strong><field name="offense"/></strong>
+                            <div><field name="sentence"/></div>
+                            <div><field name="conviction_date"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_conviction_search" model="ir.ui.view">
+        <field name="name">criminal.conviction.search</field>
+        <field name="model">criminal.conviction</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="offense"/>
+                <field name="sentence"/>
+                <filter string="Life Sentence" domain="[('sentence','=','Life')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Offense" domain="[]" context="{'group_by':'offense'}"/>
+                    <filter string="Sentence" domain="[]" context="{'group_by':'sentence'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Form View -->
     <record id="view_conviction_form" model="ir.ui.view">
         <field name="name">criminal.conviction.form</field>
         <field name="model">criminal.conviction</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Conviction" js_class="o_form_chatter">
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="offense"/>
+                        </h1>
+                    </div>
                     <group>
-                        <field name="record_id"/>
-                        <field name="conviction_date"/>
-                        <field name="offense"/>
-                        <field name="sentence"/>
-                        <field name="notes"/>
+                        <group>
+                            <field name="record_id"/>
+                            <field name="conviction_date"/>
+                        </group>
+                        <group>
+                            <field name="sentence"/>
+                        </group>
                     </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
+        </field>
+    </record>
+
+    <!-- Calendar View Example -->
+    <record id="view_conviction_calendar" model="ir.ui.view">
+        <field name="name">criminal.conviction.calendar</field>
+        <field name="model">criminal.conviction</field>
+        <field name="type">calendar</field>
+        <field name="arch" type="xml">
+            <calendar date_start="conviction_date" string="Conviction Calendar">
+                <field name="offense"/>
+                <field name="sentence"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Graph View Example -->
+    <record id="view_conviction_graph" model="ir.ui.view">
+        <field name="name">criminal.conviction.graph</field>
+        <field name="model">criminal.conviction</field>
+        <field name="type">graph</field>
+        <field name="arch" type="xml">
+            <graph string="Convictions by Offense" type="bar">
+                <field name="offense"/>
+                <field name="sentence" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Pivot View Example -->
+    <record id="view_conviction_pivot" model="ir.ui.view">
+        <field name="name">criminal.conviction.pivot</field>
+        <field name="model">criminal.conviction</field>
+        <field name="type">pivot</field>
+        <field name="arch" type="xml">
+            <pivot string="Conviction Pivot">
+                <field name="offense"/>
+                <field name="sentence"/>
+            </pivot>
         </field>
     </record>
 </odoo>
