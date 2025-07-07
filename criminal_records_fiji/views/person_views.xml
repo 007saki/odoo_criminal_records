@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_criminal_record_list" model="ir.ui.view">
+        <field name="name">criminal.record.list</field>
+        <field name="model">criminal.record</field>
+        <field name="type">list</field> <!-- ✅ Required in Odoo 18 -->
+        <field name="arch" type="xml">
+            <list> <!-- ✅ Must match type -->
+                <field name="person_id"/>
+                <field name="date_opened"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_person_form" model="ir.ui.view">
+        <field name="name">criminal.person.form</field>
+        <field name="model">criminal.person</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date_of_birth"/>
+                        <field name="gender"/>
+                        <field name="national_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Addresses">
+                            <field name="address_ids"/>
+                        </page>
+                        <page string="Fingerprints">
+                            <field name="fingerprint_ids"/>
+                        </page>
+                        <page string="Relationships">
+                            <field name="relationship_ids"/>
+                        </page>
+                        <page string="Criminal Records">
+                            <field name="criminal_record_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

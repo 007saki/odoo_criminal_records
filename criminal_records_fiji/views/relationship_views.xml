@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_relationship_tree" model="ir.ui.view">
+        <field name="name">criminal.relationship.tree</field>
+        <field name="model">criminal.relationship</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="person_id"/>
+                <field name="related_person_id"/>
+                <field name="relation_type"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_relationship_form" model="ir.ui.view">
+        <field name="name">criminal.relationship.form</field>
+        <field name="model">criminal.relationship</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="person_id"/>
+                        <field name="related_person_id"/>
+                        <field name="relation_type"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

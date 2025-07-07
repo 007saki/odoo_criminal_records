@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_criminal_person,criminal.person,model_criminal_person,,1,1,1,1
+access_criminal_record,criminal.record,model_criminal_record,,1,1,1,1
+access_criminal_conviction,criminal.conviction,model_criminal_conviction,,1,1,1,1
+access_criminal_relationship,criminal.relationship,model_criminal_relationship,,1,1,1,1
+access_criminal_address,criminal.address,model_criminal_address,,1,1,1,1
+access_criminal_fingerprint,criminal.fingerprint,model_criminal_fingerprint,,1,1,1,1

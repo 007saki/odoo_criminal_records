@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_conviction_list" model="ir.ui.view">
+        <field name="name">criminal.conviction.list</field>
+        <field name="model">criminal.conviction</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="record_id"/>
+                <field name="conviction_date"/>
+                <field name="offense"/>
+                <field name="sentence"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_conviction_form" model="ir.ui.view">
+        <field name="name">criminal.conviction.form</field>
+        <field name="model">criminal.conviction</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="record_id"/>
+                        <field name="conviction_date"/>
+                        <field name="offense"/>
+                        <field name="sentence"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

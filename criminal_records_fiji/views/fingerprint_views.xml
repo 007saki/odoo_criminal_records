@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_fingerprint_tree" model="ir.ui.view">
+        <field name="name">criminal.fingerprint.tree</field>
+        <field name="model">criminal.fingerprint</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="person_id"/>
+                <field name="date_taken"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_fingerprint_form" model="ir.ui.view">
+        <field name="name">criminal.fingerprint.form</field>
+        <field name="model">criminal.fingerprint</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="person_id"/>
+                        <field name="image"/>
+                        <field name="date_taken"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
