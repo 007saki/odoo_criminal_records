@@ -43,13 +43,10 @@
         <field name="type">search</field>
         <field name="arch" type="xml">
             <search>
+                <field name="record_id"/>
+                <field name="conviction_date"/>
                 <field name="offense"/>
                 <field name="sentence"/>
-                <filter string="Life Sentence" domain="[('sentence','=','Life')]"/>
-                <group expand="0" string="Group By">
-                    <filter string="Offense" domain="[]" context="{'group_by':'offense'}"/>
-                    <filter string="Sentence" domain="[]" context="{'group_by':'sentence'}"/>
-                </group>
             </search>
         </field>
     </record>
@@ -59,7 +56,7 @@
         <field name="name">criminal.conviction.form</field>
         <field name="model">criminal.conviction</field>
         <field name="arch" type="xml">
-            <form string="Conviction" js_class="o_form_chatter">
+            <form string="Conviction">
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -81,11 +78,6 @@
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
             </form>
         </field>
     </record>
