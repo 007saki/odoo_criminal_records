@@ -11,3 +11,4 @@
 
 ✅ Step 4: Check the Installation
     ollama list
+

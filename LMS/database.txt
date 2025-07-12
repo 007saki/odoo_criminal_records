@@ -1,0 +1,7 @@
+
+ENTITIES:
+1. Employees
+2. Leave_request
+3. leave_balance
+4. users
+
